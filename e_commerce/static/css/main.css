@@ -1,0 +1,30 @@
+#cart-icon{
+    width: 25px;
+    display: inline-block;
+    margin-left: 15px;
+    position: relative; left: 1080px; top: 20px;
+}
+.minus, .plus{
+    width: 12px;
+    display: inline-block;
+}
+
+#cart-total{
+    display: inline-block;
+    margin-left: 15px;
+    position: relative; left: 1070px; top: 20px;
+}
+
+.logout-login {
+    color: rgb(114, 0, 254);
+    text-decoration: none;
+    margin-left: 15px;
+    position: relative;
+    left: 900px;
+    top: 20px;
+}
+.thumbnail{
+    width: 125px;
+    display: inline-block;
+}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <a href="{% url 'home' %}"><h1>YukBeli</h1></a>
+        <a href="{% url 'home' %}"><p>Home</p></a>
+        <a href="{% url 'cart' %}"><img id="cart-icon" src="{% static '/images/shopping-cart.png' %}"></a>
+        <p id="cart-total">{{order.get_cart_items}}</p>
+        {% if user.is_authenticated %}
+            <a class="logout-login" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a class="logout-login" href="{% url 'login' %}">Login</a>    
+        {% endif%}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+     </head>
+     <body>
+
+     </body>
+{% block content%}
+{% endblock content %}
+</html>

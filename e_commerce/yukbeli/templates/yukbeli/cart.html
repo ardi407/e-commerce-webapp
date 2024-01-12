@@ -1,0 +1,40 @@
+{% extends 'yukbeli/main.html' %}
+{% load static %}
+{% block content %}
+<h3>Cart</h3>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <title>YukBeli</title>
+        <h3>Belanja asik, Banyak Promonya</h3>
+        
+    </head>
+    <body>
+        
+        <h3>Product List</h3> 
+            {% csrf_token %}
+            <h4>Total Product Quantity: {{order.get_cart_items}}</h4>
+            <h4>Total Product Price: {{order.get_cart_total}}</h4>
+            {% for item in items %}
+                <div>
+                    <img class="thumbnail" src="{{item.product.imageURL}}">
+                    <p>Name: {{ item.product.name }}</p>
+                    <p>Price: $ {{ item.product.price|floatformat:2 }}</p>
+                    <form method="post" action="{% url 'cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="0">
+                        <button type="submit">Update</button>
+                    </form>
+                    <p>Total Price: $ {{ item.get_total }}</p>
+                </div>
+            {% endfor %}
+            <a href="{% url 'checkout' %}">
+                <button>Checkout</button>
+            </a>
+        <script src="" async defer></script>
+    </body>
+    {% endblock content %}
+    
+    
+</html> 

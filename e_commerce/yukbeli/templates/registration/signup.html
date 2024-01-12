@@ -1,0 +1,28 @@
+{% extends "yukbeli/main.html" %}
+{% load static %}
+{% block content %}
+<div class="signup-form">
+<h2>Sign Up</h2>
+	<form class="signup" method="POST">
+			<div>
+				{% csrf_token %}
+				{% for i in form %}	
+				    {{i.label}}
+				    {{ i }}
+				{% endfor %}
+				<input type="submit" value="Signup"/>
+			</div>
+	</form>
+</div>
+{% for field, errors in form.errors.items %}
+        {% for error in errors %}
+                {% if 'password2' not in error %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endif %}
+        {% endfor %}
+{% endfor %}
+<div class="login-button">
+	<p> Already have an account?</p>
+		<a class="btn btn-outline-secondary login" href="{% url 'login' %}">Log In</a>
+</div>
+{% endblock %}

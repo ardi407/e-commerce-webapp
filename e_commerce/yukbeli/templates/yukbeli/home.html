@@ -1,0 +1,25 @@
+{% extends 'yukbeli/main.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    {% block content %}
+    <head>
+        <h4>Belanja asik, Banyak Promonya</h4>
+    </head>
+    <body>
+        <h4>Product List</h4> 
+            {% for product in products %}
+                <div>
+                    <img class="thumbnail" src="{{product.imageURL}}">
+                    <p>Name: {{ product.name }}</p>
+                    <p>Price: $ {{ product.price }}</p>
+                    <form method="post" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <button type="submit" name="product_id" value="{{ product.id }}" class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                        <a class="btn btn-outline-success" href="#">View</a>
+                    </form>
+                </div>
+            {% endfor %}
+    {% endblock content %}
+</html>

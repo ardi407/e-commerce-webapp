@@ -1,0 +1,22 @@
+{% extends "yukbeli/main.html" %}
+{% load static %}
+{% block content %}
+<div class="login-form">
+<h2>Please Login</h2>
+	<form class="login" method="POST">
+			<div>
+				{% csrf_token %}
+				{% for i in form %}	
+				{{i.label}}
+				{{ i }}
+				{% endfor %}
+				<input type="submit" value="Login"/>
+			</div>
+	</form>
+</div>
+
+<div class="signup-button">
+	<p> Don't have an account?</p>
+		<a class="btn btn-outline-secondary signup" href="{% url 'signup' %}">Sign Up</a>
+</div>
+{% endblock %}
